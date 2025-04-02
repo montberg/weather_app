@@ -1,16 +1,55 @@
-# weather_application
+# Weather Application 
 
-A new Flutter project.
+A Flutter implementation of Xiaomi's Weather App using Clean Architecture and MVVM pattern.
 
-## Getting Started
+![Project Status](https://img.shields.io/badge/status-in%20development-yellow) 
+![Flutter Version](https://img.shields.io/badge/flutter-3.19.2-blue)
 
-This project is a starting point for a Flutter application.
+## 📌 Project Status
+**Currently in planning phase** - Working on base logic
 
-A few resources to get you started if this is your first Flutter project:
+## 🛠️ Technical Stack
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### 📦 Dependency Injection
+- **get_it** + **provider** for service location and dependency management
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### 🚦 Routing
+- **auto_route** for type-safe routing and navigation
+
+### 🌐 Networking
+- **dio** + **retrofit** for REST API communication
+- **json_annotation** for JSON serialization
+- **html** for HTML parsing
+
+### 🧠 State Management
+- **flutter_mobx** + **mobx** for reactive state management
+
+### 💾 Data Persistence
+- **shared_preferences** for local storage
+- **custom state** for runtime data storage
+
+## 🏗️ Architecture
+Clean Architecture with MVVM pattern:
+
+```
+┌───────────────────────┐
+│  Presentation Layer   │
+│    (UI + ViewModels)  │
+└───────────┬───────────┘
+            │
+            ▼
+┌───────────────────────┐
+│    Domain Layer       │
+│ (Entities + Use Cases)│
+└───────────┬───────────┘
+            │
+            ▼
+┌───────────────────────┐
+│     Data Layer        │
+│(Repositories + Models)│
+└───────────────────────┘
+```
+
+## 📋 Planned Features
+- [ ] Multi-language support
+- [ ] Customizable themes
