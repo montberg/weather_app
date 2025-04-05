@@ -16,6 +16,9 @@ class UnitValue {
     required this.phrase,
   });
 
+  ///converts value of pressure into mm of mercury
+  double get mmOfMercury => value / 1.333;
+
   factory UnitValue.fromJson(Map<String, dynamic> json) =>
       _$UnitValueFromJson(json);
 

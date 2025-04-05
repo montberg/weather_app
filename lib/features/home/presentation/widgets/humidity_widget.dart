@@ -28,7 +28,6 @@ class HumidityWidgetPainter extends CustomPainter {
     }
 
     canvas.rotate(pi / 2);
-    // Фоновый серый полукруг (полный диапазон)
     canvas.drawArc(
       rect,
       pi / 4,
@@ -37,7 +36,6 @@ class HumidityWidgetPainter extends CustomPainter {
       paint(color: Colors.grey.withOpacity(0.5)),
     );
 
-    // Синий полукруг (текущее значение)
     const maxValue = 100;
     const startAngle = pi / 4;
     const sweepAngle = 3 * pi / 2;

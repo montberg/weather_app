@@ -8,7 +8,10 @@ import 'package:weather_application/core/domain/app_state/app_state.dart';
 import 'package:weather_application/features/city_search/domain/use_case/city_search_use_case.dart';
 import 'package:weather_application/features/home/presentation/logic/home_screen_logic.dart';
 import 'package:weather_application/features/home/presentation/widgets/humidity_widget.dart';
+import 'package:weather_application/features/home/presentation/widgets/pressure_widget.dart';
+import 'package:weather_application/features/home/presentation/widgets/temperature_real_feel_widget.dart';
 import 'package:weather_application/features/home/presentation/widgets/ultraviolet_widget.dart';
+import 'package:weather_application/features/home/presentation/widgets/wind_widget.dart';
 import 'package:weather_application/features/weather/data/models/weather_model/weather_model.dart';
 import 'package:weather_application/features/weather/domain/use_case/weather_use_case.dart';
 
@@ -199,29 +202,12 @@ class _CurrentConditionsWidgetState extends State<CurrentConditionsWidget> {
                     ? Center(
                         child: CircularProgressIndicator(),
                       )
-                    : Stack(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('УФ'),
-                              Text(
-                                widget.currentConditions!.uvIndexText ?? '',
-                                style:
-                                    Theme.of(context).textTheme.headlineMedium,
-                              ),
-                            ],
-                          ),
-                          Positioned(
-                            bottom: 40,
-                            right: 40,
-                            child: CustomPaint(
-                              painter: UltravioletWidgetPainter(
-                                value: widget.currentConditions!.uvIndex!,
-                              ),
-                            ),
-                          ),
-                        ],
+                    : CardWeatherData(
+                        title: "УФ",
+                        subtitle: widget.currentConditions!.uvIndexText ?? '',
+                        infoWidget: UltravioletWidgetPainter(
+                          value: widget.currentConditions!.uvIndex ?? 0,
+                        ),
                       ),
               ),
             ),
@@ -232,31 +218,14 @@ class _CurrentConditionsWidgetState extends State<CurrentConditionsWidget> {
                     ? Center(
                         child: CircularProgressIndicator(),
                       )
-                    : Stack(
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Влажность'),
-                              Text(
-                                widget.currentConditions!.relativeHumidity
-                                        .toString() +
-                                    "%",
-                                style:
-                                    Theme.of(context).textTheme.headlineMedium,
-                              ),
-                            ],
-                          ),
-                          Positioned(
-                            right: 40,
-                            bottom: 40,
-                            child: CustomPaint(
-                              painter: HumidityWidgetPainter(
-                                value: 90,
-                              ),
-                            ),
-                          )
-                        ],
+                    : CardWeatherData(
+                        title: 'Влажность',
+                        subtitle: widget.currentConditions!.relativeHumidity
+                                .toString() +
+                            "%",
+                        infoWidget: HumidityWidgetPainter(
+                          value: widget.currentConditions!.relativeHumidity!,
+                        ),
                       ),
               ),
             ),
@@ -267,14 +236,15 @@ class _CurrentConditionsWidgetState extends State<CurrentConditionsWidget> {
                     ? Center(
                         child: CircularProgressIndicator(),
                       )
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Ощущается'),
-                          Text(widget.currentConditions!.realFeelTemperature!
-                              .metric.value
-                              .toString()),
-                        ],
+                    : CardWeatherData(
+                        title: 'Ощущается',
+                        subtitle: widget.currentConditions!.realFeelTemperature!
+                            .metric.value
+                            .toString(),
+                        infoWidget: TemperatureRealFeelWidget(
+                          value: widget.currentConditions!.realFeelTemperature!
+                              .metric.value,
+                        ),
                       ),
               ),
             ),
@@ -285,16 +255,18 @@ class _CurrentConditionsWidgetState extends State<CurrentConditionsWidget> {
                     ? Center(
                         child: CircularProgressIndicator(),
                       )
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(widget
-                              .currentConditions!.wind!.direction.localized),
-                          Text(
-                            widget.currentConditions!.wind!.speed.metric.value
-                                .toString(),
-                          ),
-                        ],
+                    : CardWeatherData(
+                        title:
+                            widget.currentConditions!.wind!.direction.localized,
+                        subtitle: widget
+                            .currentConditions!.wind!.speed.metric.value
+                            .toString(),
+                        infoWidget: WindRosePainter(
+                          windDirection: widget
+                              .currentConditions!.wind!.direction.degrees
+                              .toDouble(),
+                          isMetric: true,
+                        ),
                       ),
               ),
             ),
@@ -306,13 +278,17 @@ class _CurrentConditionsWidgetState extends State<CurrentConditionsWidget> {
                     ? Center(
                         child: CircularProgressIndicator(),
                       )
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Давление'),
-                          Text(widget.currentConditions!.pressure!.metric.value
-                              .toString()),
-                        ],
+                    : CardWeatherData(
+                        title: 'Давление',
+                        subtitle: widget
+                            .currentConditions!.pressure!.metric.mmOfMercury
+                            .toInt()
+                            .toString(),
+                        infoWidget: PressureWidgetPainter(
+                          value: widget
+                              .currentConditions!.pressure!.metric.mmOfMercury
+                              .toInt(),
+                        ),
                       ),
               ),
             ),
@@ -324,6 +300,45 @@ class _CurrentConditionsWidgetState extends State<CurrentConditionsWidget> {
           height: 60,
         ),
         SizedBox(height: 30),
+      ],
+    );
+  }
+}
+
+class CardWeatherData extends StatelessWidget {
+  const CardWeatherData({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.infoWidget,
+  });
+
+  final String title;
+  final String subtitle;
+  final CustomPainter? infoWidget;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(title),
+            Text(
+              //widget.currentConditions!.uvIndexText ?? '',
+              subtitle,
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ],
+        ),
+        Positioned(
+          bottom: 40,
+          right: 40,
+          child: CustomPaint(
+            painter: infoWidget,
+          ),
+        ),
       ],
     );
   }
