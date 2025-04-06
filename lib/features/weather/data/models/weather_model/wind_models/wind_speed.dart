@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:weather_application/features/weather/data/models/unit_value.dart';
+import 'package:weather_application/features/weather/data/models/common_models/unit_value.dart';
 
 part 'wind_speed.g.dart';
 

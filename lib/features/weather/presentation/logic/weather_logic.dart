@@ -6,7 +6,7 @@ import 'package:weather_application/core/base_logic/base_logic.dart';
 import 'package:weather_application/core/data/api/cities_api/models/geo_object_model.dart';
 import 'package:weather_application/core/data/storage_service.dart';
 import 'package:weather_application/core/domain/app_state/app_state.dart';
-import 'package:weather_application/features/weather/data/models/forecast/forecast_model.dart';
+import 'package:weather_application/features/weather/data/models/daily_forecast/daily_forecast_model.dart';
 import 'package:weather_application/features/weather/domain/use_case/weather_use_case.dart';
 
 part 'weather_logic.g.dart';
@@ -39,7 +39,7 @@ abstract class _WeatherLogic extends LogicBase with Store {
   double? temperature;
 
   @observable
-  ForecastResponse? _currentForecast;
+  DailyForecastResponse? _currentForecast;
 
   @observable
   bool isLoading = false;
@@ -82,7 +82,7 @@ abstract class _WeatherLogic extends LogicBase with Store {
     try {
       if (_currentCity == null) return;
       final forecast =
-          await _weatherUseCase.getWeatherForecastMock(_currentCity!.key);
+          await _weatherUseCase.getWeatherDailyForecastMock(_currentCity!.key);
       _currentForecast = forecast;
     } finally {
       isLoading = false;

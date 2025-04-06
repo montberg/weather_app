@@ -6,7 +6,7 @@ import 'package:weather_application/core/data/api/cities_api/models/geo_object_m
 import 'package:weather_application/core/data/storage_service.dart';
 import 'package:weather_application/core/di/service_locator.dart';
 import 'package:weather_application/core/domain/app_state/app_state.dart';
-import 'package:weather_application/features/weather/data/models/forecast/forecast_model.dart';
+import 'package:weather_application/features/weather/data/models/daily_forecast/daily_forecast_model.dart';
 import 'package:weather_application/features/weather/domain/use_case/weather_use_case.dart';
 import 'package:weather_application/features/weather/presentation/logic/weather_logic.dart';
 import 'package:weather_application/features/weather/presentation/widgets/forecast_column_widget.dart';

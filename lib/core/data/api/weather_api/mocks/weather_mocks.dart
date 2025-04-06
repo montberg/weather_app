@@ -395,7 +395,7 @@ const mock_currentconditions_response = """[
   }
 ]""";
 
-const mock_forecast_response = """{
+const mock_daily_forecast_response = """{
   "Headline": {
     "EffectiveDate": "2025-03-30T07:00:00+03:00",
     "EffectiveEpochDate": 1743307200,
@@ -567,3 +567,204 @@ const mock_forecast_response = """{
     }
   ]
 }""";
+
+const mock_hourly_foreacast_response = """[
+  {
+    "DateTime": "2025-04-06T17:00:00+03:00",
+    "EpochDateTime": 1743948000,
+    "WeatherIcon": 19,
+    "IconPhrase": "Небольшой снег",
+    "HasPrecipitation": true,
+    "PrecipitationType": "Snow",
+    "PrecipitationIntensity": "Light",
+    "IsDaylight": true,
+    "Temperature": {
+      "Value": -1.8,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 78,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=17&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=17&unit=c"
+  },
+  {
+    "DateTime": "2025-04-06T18:00:00+03:00",
+    "EpochDateTime": 1743951600,
+    "WeatherIcon": 7,
+    "IconPhrase": "Облачно",
+    "HasPrecipitation": false,
+    "IsDaylight": true,
+    "Temperature": {
+      "Value": -1.8,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 49,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=18&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=18&unit=c"
+  },
+  {
+    "DateTime": "2025-04-06T19:00:00+03:00",
+    "EpochDateTime": 1743955200,
+    "WeatherIcon": 7,
+    "IconPhrase": "Облачно",
+    "HasPrecipitation": false,
+    "IsDaylight": true,
+    "Temperature": {
+      "Value": -1.7,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 34,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=19&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=19&unit=c"
+  },
+  {
+    "DateTime": "2025-04-06T20:00:00+03:00",
+    "EpochDateTime": 1743958800,
+    "WeatherIcon": 7,
+    "IconPhrase": "Облачно",
+    "HasPrecipitation": false,
+    "IsDaylight": false,
+    "Temperature": {
+      "Value": -2.1,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 34,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=20&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=20&unit=c"
+  },
+  {
+    "DateTime": "2025-04-06T21:00:00+03:00",
+    "EpochDateTime": 1743962400,
+    "WeatherIcon": 7,
+    "IconPhrase": "Облачно",
+    "HasPrecipitation": false,
+    "IsDaylight": false,
+    "Temperature": {
+      "Value": -2.5,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 40,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=21&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=21&unit=c"
+  },
+  {
+    "DateTime": "2025-04-06T22:00:00+03:00",
+    "EpochDateTime": 1743966000,
+    "WeatherIcon": 22,
+    "IconPhrase": "Снег",
+    "HasPrecipitation": true,
+    "PrecipitationType": "Snow",
+    "PrecipitationIntensity": "Heavy",
+    "IsDaylight": false,
+    "Temperature": {
+      "Value": -2.5,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 62,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=22&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=22&unit=c"
+  },
+  {
+    "DateTime": "2025-04-06T23:00:00+03:00",
+    "EpochDateTime": 1743969600,
+    "WeatherIcon": 7,
+    "IconPhrase": "Облачно",
+    "HasPrecipitation": false,
+    "IsDaylight": false,
+    "Temperature": {
+      "Value": -2.6,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 49,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=23&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=1&hbhhour=23&unit=c"
+  },
+  {
+    "DateTime": "2025-04-07T00:00:00+03:00",
+    "EpochDateTime": 1743973200,
+    "WeatherIcon": 7,
+    "IconPhrase": "Облачно",
+    "HasPrecipitation": false,
+    "IsDaylight": false,
+    "Temperature": {
+      "Value": -2.7,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 44,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=2&hbhhour=0&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=2&hbhhour=0&unit=c"
+  },
+  {
+    "DateTime": "2025-04-07T01:00:00+03:00",
+    "EpochDateTime": 1743976800,
+    "WeatherIcon": 7,
+    "IconPhrase": "Облачно",
+    "HasPrecipitation": false,
+    "IsDaylight": false,
+    "Temperature": {
+      "Value": -2.7,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 34,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=2&hbhhour=1&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=2&hbhhour=1&unit=c"
+  },
+  {
+    "DateTime": "2025-04-07T02:00:00+03:00",
+    "EpochDateTime": 1743980400,
+    "WeatherIcon": 7,
+    "IconPhrase": "Облачно",
+    "HasPrecipitation": false,
+    "IsDaylight": false,
+    "Temperature": {
+      "Value": -2.8,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 34,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=2&hbhhour=2&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=2&hbhhour=2&unit=c"
+  },
+  {
+    "DateTime": "2025-04-07T03:00:00+03:00",
+    "EpochDateTime": 1743984000,
+    "WeatherIcon": 7,
+    "IconPhrase": "Облачно",
+    "HasPrecipitation": false,
+    "IsDaylight": false,
+    "Temperature": {
+      "Value": -2.8,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 40,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=2&hbhhour=3&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=2&hbhhour=3&unit=c"
+  },
+  {
+    "DateTime": "2025-04-07T04:00:00+03:00",
+    "EpochDateTime": 1743987600,
+    "WeatherIcon": 19,
+    "IconPhrase": "Небольшой снег",
+    "HasPrecipitation": true,
+    "PrecipitationType": "Snow",
+    "PrecipitationIntensity": "Moderate",
+    "IsDaylight": false,
+    "Temperature": {
+      "Value": -2.9,
+      "Unit": "C",
+      "UnitType": 17
+    },
+    "PrecipitationProbability": 58,
+    "MobileLink": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=2&hbhhour=4&unit=c",
+    "Link": "http://www.accuweather.com/ru/ru/moscow/294021/hourly-weather-forecast/294021?day=2&hbhhour=4&unit=c"
+  }
+]""";

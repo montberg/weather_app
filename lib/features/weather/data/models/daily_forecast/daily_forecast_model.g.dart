@@ -1,47 +1,23 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'forecast_model.dart';
+part of 'daily_forecast_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ForecastResponse _$ForecastResponseFromJson(Map<String, dynamic> json) =>
-    ForecastResponse(
-      headline: Headline.fromJson(json['Headline'] as Map<String, dynamic>),
+DailyForecastResponse _$DailyForecastResponseFromJson(
+        Map<String, dynamic> json) =>
+    DailyForecastResponse(
       dailyForecasts: (json['DailyForecasts'] as List<dynamic>)
           .map((e) => DailyForecast.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$ForecastResponseToJson(ForecastResponse instance) =>
+Map<String, dynamic> _$DailyForecastResponseToJson(
+        DailyForecastResponse instance) =>
     <String, dynamic>{
-      'Headline': instance.headline,
       'DailyForecasts': instance.dailyForecasts,
-    };
-
-Headline _$HeadlineFromJson(Map<String, dynamic> json) => Headline(
-      effectiveDate: json['EffectiveDate'] as String,
-      effectiveEpochDate: (json['EffectiveEpochDate'] as num).toInt(),
-      severity: (json['Severity'] as num).toInt(),
-      text: json['Text'] as String,
-      category: json['Category'] as String,
-      endDate: json['EndDate'] as String?,
-      endEpochDate: (json['EndEpochDate'] as num?)?.toInt(),
-      mobileLink: json['MobileLink'] as String,
-      link: json['Link'] as String,
-    );
-
-Map<String, dynamic> _$HeadlineToJson(Headline instance) => <String, dynamic>{
-      'EffectiveDate': instance.effectiveDate,
-      'EffectiveEpochDate': instance.effectiveEpochDate,
-      'Severity': instance.severity,
-      'Text': instance.text,
-      'Category': instance.category,
-      'EndDate': instance.endDate,
-      'EndEpochDate': instance.endEpochDate,
-      'MobileLink': instance.mobileLink,
-      'Link': instance.link,
     };
 
 DailyForecast _$DailyForecastFromJson(Map<String, dynamic> json) =>
@@ -52,10 +28,6 @@ DailyForecast _$DailyForecastFromJson(Map<String, dynamic> json) =>
           json['Temperature'] as Map<String, dynamic>),
       day: DayNight.fromJson(json['Day'] as Map<String, dynamic>),
       night: DayNight.fromJson(json['Night'] as Map<String, dynamic>),
-      sources:
-          (json['Sources'] as List<dynamic>).map((e) => e as String).toList(),
-      mobileLink: json['MobileLink'] as String,
-      link: json['Link'] as String,
     );
 
 Map<String, dynamic> _$DailyForecastToJson(DailyForecast instance) =>
@@ -65,9 +37,6 @@ Map<String, dynamic> _$DailyForecastToJson(DailyForecast instance) =>
       'Temperature': instance.temperature,
       'Day': instance.day,
       'Night': instance.night,
-      'Sources': instance.sources,
-      'MobileLink': instance.mobileLink,
-      'Link': instance.link,
     };
 
 TemperatureMaxMin _$TemperatureMaxMinFromJson(Map<String, dynamic> json) =>

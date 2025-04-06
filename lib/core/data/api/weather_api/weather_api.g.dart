@@ -61,7 +61,7 @@ class _WeatherApi implements WeatherApi {
   }
 
   @override
-  Future<ForecastResponse> getForecast({
+  Future<DailyForecastResponse> getDailyForecast({
     required String cityId,
     required bool metric,
   }) async {
@@ -69,7 +69,7 @@ class _WeatherApi implements WeatherApi {
     final queryParameters = <String, dynamic>{r'metric': metric};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<ForecastResponse>(Options(
+    final _options = _setStreamType<DailyForecastResponse>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -86,9 +86,45 @@ class _WeatherApi implements WeatherApi {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late ForecastResponse _value;
+    late DailyForecastResponse _value;
     try {
-      _value = ForecastResponse.fromJson(_result.data!);
+      _value = DailyForecastResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<HourlyForecastResponse> getHourlyForecast({
+    required String cityId,
+    required bool metric,
+  }) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'metric': metric};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<HourlyForecastResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          '/forecasts/v1/hourly/12hour/${cityId}',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late HourlyForecastResponse _value;
+    try {
+      _value = HourlyForecastResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:weather_application/core/extensions/datetime_extension.dart';
-import 'package:weather_application/features/weather/data/models/forecast/forecast_model.dart';
+import 'package:weather_application/features/weather/data/models/daily_forecast/daily_forecast_model.dart';
 
 class ForecastColumnWidget extends StatelessWidget {
   const ForecastColumnWidget({

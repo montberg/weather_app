@@ -3,7 +3,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:weather_application/core/utils/painter_helpers.dart';
-import 'package:weather_application/features/weather/data/models/forecast/forecast_model.dart';
+import 'package:weather_application/features/weather/data/models/daily_forecast/daily_forecast_model.dart';
 
 class ForecastTempGraphPainter extends CustomPainter {
   ForecastTempGraphPainter({required this.forecast});

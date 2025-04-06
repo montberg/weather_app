@@ -67,13 +67,13 @@ mixin _$WeatherLogic on _WeatherLogic, Store {
       Atom(name: '_WeatherLogic._currentForecast', context: context);
 
   @override
-  ForecastResponse? get _currentForecast {
+  DailyForecastResponse? get _currentForecast {
     _$_currentForecastAtom.reportRead();
     return super._currentForecast;
   }
 
   @override
-  set _currentForecast(ForecastResponse? value) {
+  set _currentForecast(DailyForecastResponse? value) {
     _$_currentForecastAtom.reportWrite(value, super._currentForecast, () {
       super._currentForecast = value;
     });
