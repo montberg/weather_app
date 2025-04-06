@@ -176,130 +176,94 @@ class _CurrentConditionsWidgetState extends State<CurrentConditionsWidget> {
         const SizedBox(
           height: 500,
         ),
-        SizedBox(
+        const SizedBox(
+          height: 250,
           child: WeatherWidgetCard(
             child: Text('123'),
           ),
-          height: 250,
         ),
-        SizedBox(height: 5),
-        SizedBox(
-          child: WeatherWidgetCard(),
+        const SizedBox(height: 5),
+        const SizedBox(
           height: 200,
+          child: WeatherWidgetCard(),
         ),
-        SizedBox(height: 5),
+        const SizedBox(height: 5),
         GridView.count(
-          physics: NeverScrollableScrollPhysics(),
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           crossAxisCount: 2,
           mainAxisSpacing: 5,
           crossAxisSpacing: 5,
           children: [
             WeatherWidgetCard(
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: widget.currentConditions == null
-                    ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : CardWeatherData(
-                        title: "УФ",
-                        subtitle: widget.currentConditions!.uvIndexText ?? '',
-                        infoWidget: UltravioletWidgetPainter(
-                          value: widget.currentConditions!.uvIndex ?? 0,
-                        ),
-                      ),
+              isLoading: widget.currentConditions == null,
+              child: CardWeatherData(
+                title: "УФ",
+                subtitle: widget.currentConditions!.uvIndexText ?? '',
+                infoWidget: UltravioletWidgetPainter(
+                  value: widget.currentConditions!.uvIndex ?? 0,
+                ),
               ),
             ),
             WeatherWidgetCard(
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: widget.currentConditions == null
-                    ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : CardWeatherData(
-                        title: 'Влажность',
-                        subtitle: widget.currentConditions!.relativeHumidity
-                                .toString() +
-                            "%",
-                        infoWidget: HumidityWidgetPainter(
-                          value: widget.currentConditions!.relativeHumidity!,
-                        ),
-                      ),
+              isLoading: widget.currentConditions == null,
+              child: CardWeatherData(
+                title: 'Влажность',
+                subtitle: "${widget.currentConditions!.relativeHumidity}%",
+                infoWidget: HumidityWidgetPainter(
+                  value: widget.currentConditions!.relativeHumidity!,
+                ),
               ),
             ),
             WeatherWidgetCard(
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: widget.currentConditions == null
-                    ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : CardWeatherData(
-                        title: 'Ощущается',
-                        subtitle: widget.currentConditions!.realFeelTemperature!
-                            .metric.value
-                            .toString(),
-                        infoWidget: TemperatureRealFeelWidget(
-                          value: widget.currentConditions!.realFeelTemperature!
-                              .metric.value,
-                        ),
-                      ),
+              isLoading: widget.currentConditions == null,
+              child: CardWeatherData(
+                title: 'Ощущается',
+                subtitle: widget
+                    .currentConditions!.realFeelTemperature!.metric.value
+                    .toString(),
+                infoWidget: TemperatureRealFeelWidget(
+                  value: widget
+                      .currentConditions!.realFeelTemperature!.metric.value,
+                ),
               ),
             ),
             WeatherWidgetCard(
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: widget.currentConditions == null
-                    ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : CardWeatherData(
-                        title:
-                            widget.currentConditions!.wind!.direction.localized,
-                        subtitle: widget
-                            .currentConditions!.wind!.speed.metric.value
-                            .toString(),
-                        infoWidget: WindRosePainter(
-                          windDirection: widget
-                              .currentConditions!.wind!.direction.degrees
-                              .toDouble(),
-                          isMetric: true,
-                        ),
-                      ),
+              isLoading: widget.currentConditions == null,
+              child: CardWeatherData(
+                title: widget.currentConditions!.wind!.direction.localized,
+                subtitle: widget.currentConditions!.wind!.speed.metric.value
+                    .toString(),
+                infoWidget: WindRosePainter(
+                  windDirection: widget
+                      .currentConditions!.wind!.direction.degrees
+                      .toDouble(),
+                  isMetric: true,
+                ),
               ),
             ),
-            WeatherWidgetCard(),
+            const WeatherWidgetCard(),
             WeatherWidgetCard(
-              child: Padding(
-                padding: EdgeInsets.all(20),
-                child: widget.currentConditions == null
-                    ? Center(
-                        child: CircularProgressIndicator(),
-                      )
-                    : CardWeatherData(
-                        title: 'Давление',
-                        subtitle: widget
-                            .currentConditions!.pressure!.metric.mmOfMercury
-                            .toInt()
-                            .toString(),
-                        infoWidget: PressureWidgetPainter(
-                          value: widget
-                              .currentConditions!.pressure!.metric.mmOfMercury
-                              .toInt(),
-                        ),
-                      ),
+              isLoading: widget.currentConditions == null,
+              child: CardWeatherData(
+                title: 'Давление',
+                subtitle: widget.currentConditions!.pressure!.metric.mmOfMercury
+                    .toInt()
+                    .toString(),
+                infoWidget: PressureWidgetPainter(
+                  value: widget.currentConditions!.pressure!.metric.mmOfMercury
+                      .toInt(),
+                ),
               ),
             ),
           ],
         ),
-        SizedBox(height: 5),
-        SizedBox(
-          child: WeatherWidgetCard(),
+        const SizedBox(height: 5),
+        const SizedBox(
           height: 60,
+          child: WeatherWidgetCard(),
         ),
-        SizedBox(height: 30),
+        const SizedBox(height: 30),
       ],
     );
   }
@@ -326,7 +290,6 @@ class CardWeatherData extends StatelessWidget {
           children: [
             Text(title),
             Text(
-              //widget.currentConditions!.uvIndexText ?? '',
               subtitle,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
@@ -348,9 +311,13 @@ class WeatherWidgetCard extends StatelessWidget {
   const WeatherWidgetCard({
     super.key,
     this.child,
+    this.padding,
+    this.isLoading = false,
   });
 
   final Widget? child;
+  final EdgeInsets? padding;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -358,7 +325,14 @@ class WeatherWidgetCard extends StatelessWidget {
       margin: EdgeInsets.zero,
       surfaceTintColor: Colors.transparent,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-      child: child,
+      child: Padding(
+        padding: padding ?? const EdgeInsets.all(20),
+        child: isLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : child,
+      ),
     );
   }
 }
